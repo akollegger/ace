@@ -125,7 +125,8 @@ var modes = [
     new Mode("svg", "SVG", require("ace/mode/svg").Mode, ["svg"]),
     new Mode("text", "Text", require("ace/mode/text").Mode, ["txt"]),
     new Mode("textile", "Textile", require("ace/mode/textile").Mode, ["textile"]),
-    new Mode("xml", "XML", require("ace/mode/xml").Mode, ["xml"])
+    new Mode("xml", "XML", require("ace/mode/xml").Mode, ["xml"]),
+    new Mode("cypher", "Cypher", require("ace/mode/cypher").Mode, ["cql"])
 ];
 
 modesByName = {};
@@ -251,6 +252,10 @@ var docs = [
     new WrappedDoc(
         "pgsql", "pgSQL",
         require("ace/requirejs/text!./docs/pgsql.pgsql")
+    ),
+    new Doc(
+        "cypher", "Cypher",
+        require("ace/requirejs/text!./docs/cypher.cql")
     )
 ];
 

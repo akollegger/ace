@@ -244,7 +244,7 @@ exportAce(ACE_NAMESPACE);
  * ***** END LICENSE BLOCK ***** */
 
 
-define('kitchen-sink/demo', ['require', 'exports', 'module' , 'ace/lib/fixoldbrowsers', 'ace/lib/net', 'ace/lib/event', 'ace/theme/textmate', 'ace/edit_session', 'ace/undomanager', 'ace/keyboard/keybinding/vim', 'ace/keyboard/keybinding/emacs', 'ace/keyboard/hash_handler', 'ace/mode/c_cpp', 'ace/mode/clojure', 'ace/mode/coffee', 'ace/mode/coldfusion', 'ace/mode/csharp', 'ace/mode/css', 'ace/mode/groovy', 'ace/mode/haxe', 'ace/mode/html', 'ace/mode/java', 'ace/mode/javascript', 'ace/mode/json', 'ace/mode/latex', 'ace/mode/lua', 'ace/mode/markdown', 'ace/mode/ocaml', 'ace/mode/perl', 'ace/mode/pgsql', 'ace/mode/php', 'ace/mode/powershell', 'ace/mode/python', 'ace/mode/scala', 'ace/mode/scss', 'ace/mode/ruby', 'ace/mode/sql', 'ace/mode/svg', 'ace/mode/text', 'ace/mode/textile', 'ace/mode/xml', 'text!kitchen-sink/docs/plaintext.txt', 'text!kitchen-sink/docs/javascript.js', 'text!kitchen-sink/docs/coffeescript.coffee', 'text!kitchen-sink/docs/json.json', 'text!kitchen-sink/docs/css.css', 'text!kitchen-sink/docs/scss.scss', 'text!kitchen-sink/docs/html.html', 'text!kitchen-sink/docs/xml.xml', 'text!kitchen-sink/docs/svg.svg', 'text!kitchen-sink/docs/php.php', 'text!kitchen-sink/docs/coldfusion.cfm', 'text!kitchen-sink/docs/python.py', 'text!kitchen-sink/docs/ruby.rb', 'text!kitchen-sink/docs/perl.pl', 'text!kitchen-sink/docs/ocaml.ml', 'text!kitchen-sink/docs/lua.lua', 'text!kitchen-sink/docs/java.java', 'text!kitchen-sink/docs/clojure.clj', 'text!kitchen-sink/docs/groovy.groovy', 'text!kitchen-sink/docs/scala.scala', 'text!kitchen-sink/docs/csharp.cs', 'text!kitchen-sink/docs/powershell.ps1', 'text!kitchen-sink/docs/cpp.cpp', 'text!kitchen-sink/docs/Haxe.hx', 'text!kitchen-sink/docs/markdown.md', 'text!kitchen-sink/docs/textile.textile', 'text!kitchen-sink/docs/latex.tex', 'text!kitchen-sink/docs/sql.sql', 'text!kitchen-sink/docs/pgsql.pgsql', 'ace/split'], function(require, exports, module) {
+define('kitchen-sink/demo', ['require', 'exports', 'module' , 'ace/lib/fixoldbrowsers', 'ace/lib/net', 'ace/lib/event', 'ace/theme/textmate', 'ace/edit_session', 'ace/undomanager', 'ace/keyboard/keybinding/vim', 'ace/keyboard/keybinding/emacs', 'ace/keyboard/hash_handler', 'ace/mode/c_cpp', 'ace/mode/clojure', 'ace/mode/coffee', 'ace/mode/coldfusion', 'ace/mode/csharp', 'ace/mode/css', 'ace/mode/groovy', 'ace/mode/haxe', 'ace/mode/html', 'ace/mode/java', 'ace/mode/javascript', 'ace/mode/json', 'ace/mode/latex', 'ace/mode/lua', 'ace/mode/markdown', 'ace/mode/ocaml', 'ace/mode/perl', 'ace/mode/pgsql', 'ace/mode/php', 'ace/mode/powershell', 'ace/mode/python', 'ace/mode/scala', 'ace/mode/scss', 'ace/mode/ruby', 'ace/mode/sql', 'ace/mode/svg', 'ace/mode/text', 'ace/mode/textile', 'ace/mode/xml', 'ace/mode/cypher', 'text!kitchen-sink/docs/plaintext.txt', 'text!kitchen-sink/docs/javascript.js', 'text!kitchen-sink/docs/coffeescript.coffee', 'text!kitchen-sink/docs/json.json', 'text!kitchen-sink/docs/css.css', 'text!kitchen-sink/docs/scss.scss', 'text!kitchen-sink/docs/html.html', 'text!kitchen-sink/docs/xml.xml', 'text!kitchen-sink/docs/svg.svg', 'text!kitchen-sink/docs/php.php', 'text!kitchen-sink/docs/coldfusion.cfm', 'text!kitchen-sink/docs/python.py', 'text!kitchen-sink/docs/ruby.rb', 'text!kitchen-sink/docs/perl.pl', 'text!kitchen-sink/docs/ocaml.ml', 'text!kitchen-sink/docs/lua.lua', 'text!kitchen-sink/docs/java.java', 'text!kitchen-sink/docs/clojure.clj', 'text!kitchen-sink/docs/groovy.groovy', 'text!kitchen-sink/docs/scala.scala', 'text!kitchen-sink/docs/csharp.cs', 'text!kitchen-sink/docs/powershell.ps1', 'text!kitchen-sink/docs/cpp.cpp', 'text!kitchen-sink/docs/Haxe.hx', 'text!kitchen-sink/docs/markdown.md', 'text!kitchen-sink/docs/textile.textile', 'text!kitchen-sink/docs/latex.tex', 'text!kitchen-sink/docs/sql.sql', 'text!kitchen-sink/docs/pgsql.pgsql', 'text!kitchen-sink/docs/cypher.cql', 'ace/split'], function(require, exports, module) {
 
 require("ace/lib/fixoldbrowsers");
 var env = {};
@@ -331,7 +331,8 @@ var modes = [
     new Mode("svg", "SVG", require("ace/mode/svg").Mode, ["svg"]),
     new Mode("text", "Text", require("ace/mode/text").Mode, ["txt"]),
     new Mode("textile", "Textile", require("ace/mode/textile").Mode, ["textile"]),
-    new Mode("xml", "XML", require("ace/mode/xml").Mode, ["xml"])
+    new Mode("xml", "XML", require("ace/mode/xml").Mode, ["xml"]),
+    new Mode("cypher", "Cypher", require("ace/mode/cypher").Mode, ["cql"])
 ];
 
 modesByName = {};
@@ -457,6 +458,10 @@ var docs = [
     new WrappedDoc(
         "pgsql", "pgSQL",
         require("text!./docs/pgsql.pgsql")
+    ),
+    new Doc(
+        "cypher", "Cypher",
+        require("text!./docs/cypher.cql")
     )
 ];
 
@@ -19987,6 +19992,171 @@ oop.inherits(TextileHighlightRules, TextHighlightRules);
 exports.TextileHighlightRules = TextileHighlightRules;
 
 });
+/* ***** BEGIN LICENSE BLOCK *****
+* The Original Code is Ajax.org Code Editor (ACE).
+*
+* Contributor(s):
+*      Jonathan Camile <jonathan.camile AT gmail DOT com>
+*
+* Alternatively, the contents of this file may be used under the terms of
+* either the GNU General Public License Version 2 or later (the "GPL"), or
+* the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+* in which case the provisions of the GPL or the LGPL are applicable instead
+* of those above. If you wish to allow use of your version of this file only
+* under the terms of either the GPL or the LGPL, and not to allow others to
+* use your version of this file under the terms of the MPL, indicate your
+* decision by deleting the provisions above and replace them with the notice
+* and other provisions required by the GPL or the LGPL. If you do not delete
+* the provisions above, a recipient may use your version of this file under
+* the terms of any one of the MPL, the GPL or the LGPL.
+*
+* ***** END LICENSE BLOCK ***** */
+
+define('ace/mode/cypher', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/mode/text', 'ace/tokenizer', 'ace/mode/cypher_highlight_rules', 'ace/range'], function(require, exports, module) {
+"use strict";
+
+var oop = require("../lib/oop");
+var TextMode = require("./text").Mode;
+var Tokenizer = require("../tokenizer").Tokenizer;
+var CypherHighlightRules = require("./cypher_highlight_rules").CypherHighlightRules;
+var Range = require("../range").Range;
+
+var Mode = function() {
+    this.$tokenizer = new Tokenizer(new CypherHighlightRules().getRules());
+};
+oop.inherits(Mode, TextMode);
+
+(function() {
+
+    this.toggleCommentLines = function(state, doc, startRow, endRow) {
+        var outdent = true;
+        var outentedRows = [];
+        var re = /^(\s*)--/;
+
+        for (var i=startRow; i<= endRow; i++) {
+            if (!re.test(doc.getLine(i))) {
+                outdent = false;
+                break;
+            }
+        }
+
+        if (outdent) {
+            var deleteRange = new Range(0, 0, 0, 0);
+            for (var i=startRow; i<= endRow; i++)
+            {
+                var line = doc.getLine(i);
+                var m = line.match(re);
+                deleteRange.start.row = i;
+                deleteRange.end.row = i;
+                deleteRange.end.column = m[0].length;
+                doc.replace(deleteRange, m[1]);
+            }
+        }
+        else {
+            doc.indentRows(startRow, endRow, "--");
+        }
+    };
+
+}).call(Mode.prototype);
+
+exports.Mode = Mode;
+
+});
+/* ***** BEGIN LICENSE BLOCK *****
+ * The Original Code is Ajax.org Code Editor (ACE).
+ *
+ * Contributor(s):
+ *      Jonathan Camile <jonathan.camile AT gmail DOT com>
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+define('ace/mode/cypher_highlight_rules', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/lib/lang', 'ace/mode/text_highlight_rules'], function(require, exports, module) {
+"use strict";
+
+var oop = require("../lib/oop");
+var lang = require("../lib/lang");
+var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
+
+var CypherHighlightRules = function() {
+
+    var keywords = lang.arrayToMap(
+        ("start|match|return|where|and|or|group|by|order|limit|offset|having|as|case|" +
+        "when|else|end|type|left|right|join|on|outer|desc|asc").split("|")
+    );
+
+    var builtinConstants = lang.arrayToMap(
+        ("true|false|null").split("|")
+    );
+
+    var builtinFunctions = lang.arrayToMap(
+        ("count|min|max|avg|sum|rank|now|coalesce").split("|")
+    );
+
+    this.$rules = {
+        "start" : [ {
+            token : "comment",
+            regex : "--.*$"
+        }, {
+            token : "string",           // " string
+            regex : '".*"'
+        }, {
+            token : "string",           // ' string
+            regex : "'.*'"
+        }, {
+            token : "constant.numeric", // float
+            regex : "[+-]?\\d+(?:(?:\\.\\d*)?(?:[eE][+-]?\\d+)?)?\\b"
+        }, {
+            token : function(value) {
+                value = value.toLowerCase();
+                if (keywords.hasOwnProperty(value))
+                    return "keyword";
+                else if (builtinConstants.hasOwnProperty(value))
+                    return "constant.language";
+                else if (builtinFunctions.hasOwnProperty(value))
+                    return "support.function";
+                else
+                    return "identifier";
+            },
+            regex : "[a-zA-Z_$][a-zA-Z0-9_$]*\\b"
+        }, {
+            token : "keyword.operator",
+            regex : ":|\\+|\\-|\\/|\\/\\/|%|<@>|@>|<@|&|\\^|~|<|>|<=|=>|==|!=|<>|="
+        }, {
+            token : "lparen.paren",
+            regex : "[\\(]"
+        }, {
+            token : "paren.rparen",
+            regex : "[\\)]"
+        }, {
+            token : "text",
+            regex : "\\s+"
+        }, {
+            token : "keyword.operator", // relationships
+            regex : "\\-\\-|<\\-\\-|\\-\\->"
+        }, {
+            token : "constant",
+            regex : "\\[:.*\\]"
+        }  ]
+    };
+};
+
+oop.inherits(CypherHighlightRules, TextHighlightRules);
+
+exports.CypherHighlightRules = CypherHighlightRules;
+});
+
 define("text!kitchen-sink/docs/plaintext.txt", [], "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\n" +
   "\n" +
   "Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.\n" +
@@ -20488,44 +20658,116 @@ define("text!kitchen-sink/docs/clojure.clj", [], "(defn parting\n" +
   "(println (parting \"Mark\" \"es\")) ; -> Adios, Mark\n" +
   "(println (parting \"Mark\", \"xy\")) ; -> java.lang.IllegalArgumentException: unsupported language xy");
 
-define("text!kitchen-sink/docs/groovy.groovy", [], "//http://groovy.codehaus.org/Concurrency+with+Groovy\n" +
-  "import java.util.concurrent.atomic.AtomicInteger\n" +
+define("text!kitchen-sink/docs/groovy.groovy", [], "//http://groovy.codehaus.org/Martin+Fowler%27s+closure+examples+in+Groovy\n" +
   "\n" +
-  "def counter = new AtomicInteger()\n" +
-  "\n" +
-  "synchronized out(message) {\n" +
-  "    println(message)\n" +
+  "class Employee {\n" +
+  "    def name, salary\n" +
+  "    boolean manager\n" +
+  "    String toString() { return name }\n" +
   "}\n" +
   "\n" +
-  "def th = Thread.start {\n" +
-  "    for( i in 1..8 ) {\n" +
-  "        sleep 30\n" +
-  "        out \"thread loop $i\"\n" +
-  "        counter.incrementAndGet()\n" +
-  "    }\n" +
+  "def emps = [new Employee(name:'Guillaume', manager:true, salary:200),\n" +
+  "    new Employee(name:'Graeme', manager:true, salary:200),\n" +
+  "    new Employee(name:'Dierk', manager:false, salary:151),\n" +
+  "    new Employee(name:'Bernd', manager:false, salary:50)]\n" +
+  "\n" +
+  "def managers(emps) {\n" +
+  "    emps.findAll { e -> e.isManager() }\n" +
   "}\n" +
   "\n" +
-  "for( j in 1..4 ) {\n" +
-  "    sleep 50\n" +
-  "    out \"main loop $j\"\n" +
-  "    counter.incrementAndGet()\n" +
+  "assert emps[0..1] == managers(emps) // [Guillaume, Graeme]\n" +
+  "\n" +
+  "def highPaid(emps) {\n" +
+  "    threshold = 150\n" +
+  "    emps.findAll { e -> e.salary > threshold }\n" +
   "}\n" +
   "\n" +
-  "th.join()\n" +
+  "assert emps[0..2] == highPaid(emps) // [Guillaume, Graeme, Dierk]\n" +
   "\n" +
-  "assert counter.get() == 12");
+  "def paidMore(amount) {\n" +
+  "    { e -> e.salary > amount}\n" +
+  "}\n" +
+  "def highPaid = paidMore(150)\n" +
+  "\n" +
+  "assert highPaid(emps[0]) // true\n" +
+  "assert emps[0..2] == emps.findAll(highPaid)\n" +
+  "\n" +
+  "def filename = 'test.txt'\n" +
+  "new File(filename).withReader{ reader -> doSomethingWith(reader) }\n" +
+  "\n" +
+  "def readersText\n" +
+  "def doSomethingWith(reader) { readersText = reader.text }\n" +
+  "\n" +
+  "assert new File(filename).text == readersText");
 
-define("text!kitchen-sink/docs/scala.scala", [], "//http://www.scala-lang.org/node/227\n" +
-  "/* Defines a new method 'sort' for array objects */\n" +
-  "object implicits extends Application {\n" +
-  "  implicit def arrayWrapper[A : ClassManifest](x: Array[A]) =\n" +
-  "    new {\n" +
-  "      def sort(p: (A, A) => Boolean) = {\n" +
-  "        util.Sorting.stableSort(x, p); x\n" +
+define("text!kitchen-sink/docs/scala.scala", [], "// http://www.scala-lang.org/node/54\n" +
+  "\n" +
+  "package examples.actors\n" +
+  "\n" +
+  "import scala.actors.Actor\n" +
+  "import scala.actors.Actor._\n" +
+  "\n" +
+  "abstract class PingMessage\n" +
+  "case object Start extends PingMessage\n" +
+  "case object SendPing extends PingMessage\n" +
+  "case object Pong extends PingMessage\n" +
+  "\n" +
+  "abstract class PongMessage\n" +
+  "case object Ping extends PongMessage\n" +
+  "case object Stop extends PongMessage\n" +
+  "\n" +
+  "object pingpong extends Application {\n" +
+  "  val pong = new Pong\n" +
+  "  val ping = new Ping(100000, pong)\n" +
+  "  ping.start\n" +
+  "  pong.start\n" +
+  "  ping ! Start\n" +
+  "}\n" +
+  "\n" +
+  "class Ping(count: Int, pong: Actor) extends Actor {\n" +
+  "  def act() {\n" +
+  "    println(\"Ping: Initializing with count \"+count+\": \"+pong)\n" +
+  "    var pingsLeft = count\n" +
+  "    loop {\n" +
+  "      react {\n" +
+  "        case Start =>\n" +
+  "          println(\"Ping: starting.\")\n" +
+  "          pong ! Ping\n" +
+  "          pingsLeft = pingsLeft - 1\n" +
+  "        case SendPing =>\n" +
+  "          pong ! Ping\n" +
+  "          pingsLeft = pingsLeft - 1\n" +
+  "        case Pong =>\n" +
+  "          if (pingsLeft % 1000 == 0)\n" +
+  "            println(\"Ping: pong from: \"+sender)\n" +
+  "          if (pingsLeft > 0)\n" +
+  "            self ! SendPing\n" +
+  "          else {\n" +
+  "            println(\"Ping: Stop.\")\n" +
+  "            pong ! Stop\n" +
+  "            exit('stop)\n" +
+  "          }\n" +
   "      }\n" +
   "    }\n" +
-  "  val x = Array(2, 3, 1, 4)\n" +
-  "  println(\"x = \"+ x.sort((x: Int, y: Int) => x < y))\n" +
+  "  }\n" +
+  "}\n" +
+  "\n" +
+  "class Pong extends Actor {\n" +
+  "  def act() {\n" +
+  "    var pongCount = 0\n" +
+  "    loop {\n" +
+  "      react {\n" +
+  "        case Ping =>\n" +
+  "          if (pongCount % 1000 == 0)\n" +
+  "            println(\"Pong: ping \"+pongCount+\" from \"+sender)\n" +
+  "          sender ! Pong\n" +
+  "          pongCount = pongCount + 1\n" +
+  "        case Stop =>\n" +
+  "          println(\"Pong: Stop.\")\n" +
+  "          exit('stop)\n" +
+  "      }\n" +
+  "    }\n" +
+  "  }\n" +
   "}");
 
 define("text!kitchen-sink/docs/csharp.cs", [], "public void HelloWorld() {\n" +
@@ -20938,6 +21180,20 @@ define("text!kitchen-sink/docs/pgsql.pgsql", [], "\n" +
   "$$;\n" +
   "\n" +
   "END;\n" +
+  "");
+
+define("text!kitchen-sink/docs/cypher.cql", [], "start n=node(0) return n\n" +
+  "\n" +
+  "start me=node(1) match (me)--(others) return others\n" +
+  "\n" +
+  "start me=node(123) match (me)-->(others) return others\n" +
+  "\n" +
+  "start me=node(1) match (me)<--(others) return others\n" +
+  "\n" +
+  "start me=node(1) match (me)-[:KNOWS]->(foaf) return foaf\n" +
+  "\n" +
+  "start n=node:Twitter(handler=\"akollegger\") match (n)-[:FOLLOWS]->(f) where f.handle =~ 'neo.*' return f.handle\n" +
+  "\n" +
   "");
 
 /* vim:ts=4:sts=4:sw=4:
