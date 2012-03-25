@@ -24,11 +24,11 @@ __ace_shadowed__.define('ace/mode/cypher', ['require', 'exports', 'module' , 'ac
 var oop = require("../lib/oop");
 var TextMode = require("./text").Mode;
 var Tokenizer = require("../tokenizer").Tokenizer;
-var SqlHighlightRules = require("./cypher_highlight_rules").SqlHighlightRules;
+var CypherHighlightRules = require("./cypher_highlight_rules").CypherHighlightRules;
 var Range = require("../range").Range;
 
 var Mode = function() {
-    this.$tokenizer = new Tokenizer(new SqlHighlightRules().getRules());
+    this.$tokenizer = new Tokenizer(new CypherHighlightRules().getRules());
 };
 oop.inherits(Mode, TextMode);
 
@@ -98,7 +98,7 @@ var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
 var CypherHighlightRules = function() {
 
     var keywords = lang.arrayToMap(
-        ("select|from|where|and|or|group|by|order|limit|offset|having|as|case|" +
+        ("start|match|return|where|and|or|group|by|order|limit|offset|having|as|case|" +
         "when|else|end|type|left|right|join|on|outer|desc|asc").split("|")
     );
 
@@ -138,7 +138,7 @@ var CypherHighlightRules = function() {
             regex : "[a-zA-Z_$][a-zA-Z0-9_$]*\\b"
         }, {
             token : "keyword.operator",
-            regex : "\\+|\\-|\\/|\\/\\/|%|<@>|@>|<@|&|\\^|~|<|>|<=|=>|==|!=|<>|="
+            regex : ":|\\+|\\-|\\/|\\/\\/|%|<@>|@>|<@|&|\\^|~|<|>|<=|=>|==|!=|<>|="
         }, {
             token : "lparen.paren",
             regex : "[\\(]"
@@ -148,7 +148,13 @@ var CypherHighlightRules = function() {
         }, {
             token : "text",
             regex : "\\s+"
-        } ]
+        }, {
+            token : "keyword.operator", // relationships
+            regex : "\\-\\-|<\\-\\-|\\-\\->"
+        }, {
+            token : "constant",
+            regex : "\\[:.*\\]"
+        }  ]
     };
 };
 
